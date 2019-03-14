@@ -12,4 +12,7 @@ def validate():
     settings = Configuration(raw_settings)
     errors = settings.validate_and_normalize()
 
+    # strip display names
+    errors = [[key, error] for key, _, error in errors]
+
     return jsonify(errors)
