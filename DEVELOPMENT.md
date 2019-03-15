@@ -53,6 +53,8 @@ curl --header "Content-Type: application/json" --request POST -d @/PATH/TO/MODEL
 
 The current setup includes no deployment process or environment in which it can be hosted. Those things would need to be worked out with the EpivizAT team since they have agreed to host this service in the same environment in which they host the EpivizAT application itself.
 
+One possible production deployment would be to run the application under gunicorn within the same VM/container as EpivizAT and have EpivizAT access it over loopback.
+
 Some process for pushing updates should also be added, even if that just means redeploying the whole EpivizAT system. Historically the development of EpivizAT and cascade have been loosely coupled but this service introduces a tighter coupling since it includes detailed validations which should match in EpivizAT and in cascade.
 
 Some thought should also go into reliability. As it is, the service is quite simple and should be robust as a result but since it will gate the user's ability to submit models from EpivizAT it must be at least as robust and reliable as EpivizAT iteslf. The current implementation does very little error handling.
